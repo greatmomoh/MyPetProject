@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="Theme.AppTheme.HeaderedText" parent="">
+        <item name="android:fontFamily">@font/itim_regular</item>
+        <item name="fontFamily">@font/itim_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_32</item>
+    </style>
+
+    <style name="Theme.AppTheme.ExtendedText" parent="">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="fontFamily">@font/mulish_bold</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="lineHeight">13dp</item>
+    </style>
+
 </resources>

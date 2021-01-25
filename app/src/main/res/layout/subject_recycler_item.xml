@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size_155"
+    android:layout_height="@dimen/size_74"
+    android:layout_margin="@dimen/size_10"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/subject_item_background">
+
+    <ImageView
+        android:id="@+id/subject_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitXY"
+        tools:src="@drawable/mask_group"
+        />
+
+    <TextView
+        android:id="@+id/subject_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/subject_image"
+        app:layout_constraintEnd_toEndOf="@id/subject_image"
+        app:layout_constraintBottom_toBottomOf="@id/subject_image"
+        app:layout_constraintTop_toTopOf="@id/subject_image"
+        android:layout_margin="@dimen/size_12"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.9"
+        android:textAllCaps="true"
+        style="@style/Theme.AppTheme.ExtendedText"
+        android:textColor="@color/white"
+        tools:text="MATHEMATICS"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

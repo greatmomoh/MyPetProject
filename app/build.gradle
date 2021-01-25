@@ -79,6 +79,7 @@ dependencies {
     //COIL
     implementation "io.coil-kt:coil:$coil_version"
     implementation "io.coil-kt:coil-svg:$coil_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //ANNOTATION PROCESSORS
     kapt "androidx.room:room-compiler:$room_version"
