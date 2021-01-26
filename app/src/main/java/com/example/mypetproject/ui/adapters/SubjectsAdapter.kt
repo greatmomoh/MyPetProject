@@ -43,9 +43,9 @@ class SubjectsAdapter(private val itemClickListener: ItemClickListener<SubjectMo
         private val actionClickListener: ItemClickListener<SubjectModel>?
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(subjectModel: SubjectModel){
+        fun bind(subjectModel: SubjectModel) {
             binding.subjectName.text = subjectModel.name
-            binding.subjectImage.load(subjectModel.icon){
+            binding.subjectImage.load(subjectModel.icon) {
                 scale(Scale.FIT)
                 placeholder(R.drawable.mask_group)
                 error(R.drawable.mask_group)

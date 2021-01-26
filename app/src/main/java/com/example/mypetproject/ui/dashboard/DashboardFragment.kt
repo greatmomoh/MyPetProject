@@ -24,7 +24,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
 
     private val dashboardViewModel: DashboardViewModel by activityViewModels()
 
-    private val subjectsAdapter : SubjectsAdapter by lazy {
+    private val subjectsAdapter: SubjectsAdapter by lazy {
         SubjectsAdapter(this)
     }
 
@@ -43,7 +43,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
     }
 
     private fun handleViewStateChanges(viewState: DashboardViewModel.Companion.ViewState) {
-        when (viewState.loadState){
+        when (viewState.loadState) {
             LoadingState.Idle -> {
 
             }
@@ -55,12 +55,15 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
                 viewState.error?.message?.let {
                     showSnackBar(it)
                 }
+                if (viewState.subjects.isNotEmpty()) {
+                    subjectsAdapter.submitList(viewState.subjects)
+                }
 
             }
             LoadingState.Success -> {
 
                 binding.loadingProgress.isVisible = false
-                if (viewState.subjects.isNotEmpty()){
+                if (viewState.subjects.isNotEmpty()) {
                     subjectsAdapter.submitList(viewState.subjects)
                 }
 
@@ -80,7 +83,11 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
     }
 
     override fun onItemClick(model: SubjectModel) {
-
+        navController.navigate(
+            DashboardFragmentDirections.actionDashboardFragmentToSubjectDetailsFragment(
+                model
+            )
+        )
     }
 
 

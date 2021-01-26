@@ -3,9 +3,14 @@
     <dimen name="size_330">330dp</dimen>
     <dimen name="size_300">300dp</dimen>
     <dimen name="size_270">270dp</dimen>
+    <dimen name="size_165">165dp</dimen>
+    <dimen name="size_170">170dp</dimen>
+    <dimen name="size_160">160dp</dimen>
     <dimen name="size_120">120dp</dimen>
     <dimen name="size_155">155dp</dimen>
+    <dimen name="size_148">148dp</dimen>
     <dimen name="size_96">96dp</dimen>
+    <dimen name="size_93">93dp</dimen>
     <dimen name="size_80">80dp</dimen>
     <dimen name="size_78">78dp</dimen>
     <dimen name="size_74">74dp</dimen>

@@ -67,7 +67,7 @@ class CoreWebServiceClient @Inject constructor(
         private val appContext = context.applicationContext
 
         override fun intercept(chain: Interceptor.Chain): Response {
-            if (!isNetworkConnected(appContext)) throw NoConnectivityException("")
+            if (!isNetworkConnected(appContext)) throw NoConnectivityException("Please check your connection and retry.")
             return chain.proceed(chain.request())
         }
 

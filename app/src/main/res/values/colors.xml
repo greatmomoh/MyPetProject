@@ -5,6 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
 
 
+    <color name="grey_fragment_bg_color">#EDEDEE</color>
+
     <color name="colorAccentLight">#0DBC5E2C</color>
     <color name="colorAccentTransparent">#26BC5E2C</color>
     <color name="colorAccentHighLight">#FAEFE5</color>

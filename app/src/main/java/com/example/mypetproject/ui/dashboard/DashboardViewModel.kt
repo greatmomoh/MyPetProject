@@ -35,6 +35,7 @@ class DashboardViewModel @ViewModelInject constructor(
             }
         }.catch {
             it.printStackTrace()
+
             _viewState.updateValue {
                 copy(loadState = LoadingState.Error, error = it)
             }

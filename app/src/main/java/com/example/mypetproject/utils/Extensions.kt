@@ -1,21 +1,28 @@
 package com.example.mypetproject.utils
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.Color
+import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlin.math.roundToInt
 
 fun AppCompatActivity.navControllers(id: Int): Lazy<NavController> {
     return lazy {
@@ -66,8 +73,22 @@ fun <T> MutableStateFlow<T>.updateValue(updateFn: T.() -> T): T {
     return updatedValue
 }
 
+fun RecyclerView.removeAllDecorations() {
+    while (this.itemDecorationCount > 0) {
+        this.removeItemDecoration(this.getItemDecorationAt(0))
+    }
+}
+fun Context.dpToPx(dp: Int): Int {
+    val displayMetrics: DisplayMetrics = resources.displayMetrics
+    return (dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
+}
+
+
 val Fragment.viewLifecycleScope
     get() = viewLifecycleOwner.lifecycleScope
+
+val Fragment.navController
+    get() = findNavController()
 
 fun Fragment.showSnackBar(
     snackBarText: String,
@@ -76,6 +97,21 @@ fun Fragment.showSnackBar(
 ) {
     activity?.showSnackBar(snackBarText, timeLength, topGravity)
 }
+
+/**
+ * set up toolbar in Fragment
+ **/
+fun Fragment.setUpToolbar(toolbar: Toolbar, action: ActionBar.() -> Unit = {}) {
+    appCompatActivity().run {
+        setSupportActionBar(toolbar)
+        supportActionBar?.action()
+    }
+}
+
+fun Fragment.appCompatActivity(): AppCompatActivity {
+    return requireActivity() as AppCompatActivity
+}
+
 
 fun Activity.showSnackBar(
     snackBarText: String,

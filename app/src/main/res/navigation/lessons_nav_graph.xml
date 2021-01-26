@@ -9,5 +9,23 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.mypetproject.ui.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_subjectDetailsFragment"
+            app:destination="@id/subjectDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectDetailsFragment"
+        android:name="com.example.mypetproject.ui.subject.SubjectDetailsFragment"
+        android:label="subject_details_fragment"
+        tools:layout="@layout/subject_details_fragment">
+        <argument
+            android:name="subject"
+            app:argType="com.example.mypetproject.model.SubjectModel" />
+    </fragment>
 </navigation>
