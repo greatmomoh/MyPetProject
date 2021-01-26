@@ -2,6 +2,7 @@ package com.example.mypetproject.ui.dashboard
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,10 +10,11 @@ import com.example.mypetproject.R
 import com.example.mypetproject.databinding.DashboardFragmentBinding
 import com.example.mypetproject.model.SubjectModel
 import com.example.mypetproject.ui.adapters.SubjectsAdapter
-import com.example.mypetproject.utils.ItemClickListener
-import com.example.mypetproject.utils.viewBinding
+import com.example.mypetproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
@@ -35,10 +37,42 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
     }
 
     private fun listenForStateChanges() {
+        dashboardViewModel.viewState.onEach {
+            handleViewStateChanges(it)
+        }.launchIn(viewLifecycleScope)
+    }
 
+    private fun handleViewStateChanges(viewState: DashboardViewModel.Companion.ViewState) {
+        when (viewState.loadState){
+            LoadingState.Idle -> {
+
+            }
+            LoadingState.Working -> {
+                binding.loadingProgress.isVisible = true
+            }
+            LoadingState.Error -> {
+                binding.loadingProgress.isVisible = false
+                viewState.error?.message?.let {
+                    showSnackBar(it)
+                }
+
+            }
+            LoadingState.Success -> {
+
+                binding.loadingProgress.isVisible = false
+                if (viewState.subjects.isNotEmpty()){
+                    subjectsAdapter.submitList(viewState.subjects)
+                }
+
+            }
+        }
     }
 
     private fun setupViews() {
+        binding.studentName.setOnClickListener {
+            dashboardViewModel.fetchCourses()
+        }
+
         binding.coursesRecycler.apply {
             adapter = subjectsAdapter
             layoutManager = GridLayoutManager(context, 2)
