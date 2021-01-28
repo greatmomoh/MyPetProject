@@ -15,8 +15,8 @@ android {
         applicationId "com.example.mypetproject"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,8 +32,33 @@ android {
             buildConfigField "String", "ULESSON_BASE_URL", '\"https://jackiechanbruteforce.ulesson.com/3p/api/\"'
             applicationIdSuffix ".debug"
             debuggable true
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [APP_ID: "com.example.mypetproject.debug"]
+            matchingFallbacks = 'debug'
+            ext.alwaysUpdateBuildId = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
         }
 
+    }
+
+    signingConfigs {
+
+        release {
+            storeFile file("../personalandroid.jks")
+            storePassword "greatmomoh"
+            keyAlias "MyAndroidKey"
+            keyPassword "greatmomoh"
+        }
+    }
+
+    // disable multi APKs and PNG cruncher in debug
+    if (project.hasProperty('debug')) {
+        splits.abi.enable = false
+        splits.density.enable = false
+        aaptOptions.cruncherEnabled = false
+        resConfigs("en", "xxhdpi")
     }
 
     viewBinding {
