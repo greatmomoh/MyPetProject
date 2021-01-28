@@ -55,9 +55,9 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
                 viewState.error?.message?.let {
                     showSnackBar(it)
                 }
-                if (viewState.subjects.isNotEmpty()) {
-                    subjectsAdapter.submitList(viewState.subjects)
-                }
+//                if (viewState.subjects.isNotEmpty()) {
+//                    subjectsAdapter.submitList(viewState.subjects)
+//                }
 
             }
             LoadingState.Success -> {
@@ -65,6 +65,10 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), ItemClickListen
                 binding.loadingProgress.isVisible = false
                 if (viewState.subjects.isNotEmpty()) {
                     subjectsAdapter.submitList(viewState.subjects)
+                }
+
+                if (viewState.lessons.isNotEmpty()){
+                    showSnackBar(viewState.lessons.toString())
                 }
 
             }

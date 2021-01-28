@@ -15,14 +15,16 @@ fun <ResultType, RequestType> networkBoundResource(
     val cachedData = query().first()
     val flow = if (shouldFetch(cachedData)) {
         try {
-            if((cachedData as? List<*>)?.isNotEmpty() == true){
+            if ((cachedData as? List<*>)?.isNotEmpty() == true) {
                 emit(cachedData)
             }
             val fetchResponse = fetch()
             saveFetchResult(fetchResponse)
             query()
         } catch (throwable: Throwable) {
-            onFetchFailed(throwable)
+            if ((cachedData as? List<*>)?.isEmpty() == true) {
+                onFetchFailed(throwable)
+            }
             query()
         }
     } else {

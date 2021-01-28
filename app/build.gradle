@@ -88,6 +88,11 @@ dependencies {
     implementation "io.coil-kt:coil-svg:$coil_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //EXOPLAYER
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer"
+
+
     //ANNOTATION PROCESSORS
     kapt "androidx.room:room-compiler:$room_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"

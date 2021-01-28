@@ -2,9 +2,7 @@ package com.example.mypetproject.data.repositories
 
 import com.example.mypetproject.data.core.Database
 import com.example.mypetproject.data.core.UlessonWebFactory
-import com.example.mypetproject.data.repositories.cache.SubjectsDao
-import com.example.mypetproject.data.repositories.cache.SubjectsLocalRepository
-import com.example.mypetproject.data.repositories.cache.SubjectsLocalRepositoryImpl
+import com.example.mypetproject.data.repositories.cache.*
 import com.example.mypetproject.data.repositories.remote.SubjectsWebService
 import dagger.Binds
 import dagger.Module
@@ -26,6 +24,18 @@ interface DataModule {
     @Binds
     @Singleton
     fun bindLocalRepo(repository: SubjectsLocalRepositoryImpl): SubjectsLocalRepository
+
+
+    @Binds
+    @Singleton
+    fun bindLessonsRepository(repository: LessonsRepositoryImpl): LessonsRepository
+
+    @Binds
+    @Singleton
+    fun bindLessonsLocalRepo(repository: LessonsLocalRepositoryImpl): LessonsLocalRepository
+
+
+
 }
 
 @Module
@@ -44,5 +54,10 @@ object Providers {
         return database.subjectsDao()
     }
 
+    @Provides
+    @Singleton
+    fun provideLessonsDao(database: Database): LessonsDao {
+        return database.lessonsDao()
+    }
 
 }

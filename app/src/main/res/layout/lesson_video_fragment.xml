@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.videoplayer.LessonVideoFragment">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:elevation="0dp"-->
+<!--        android:paddingStart="@dimen/size_12"-->
+<!--        android:background="@color/transparent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:navigationIcon="@drawable/black_arrow_icon"-->
+<!--        style="@style/Theme.AppTheme.ExtendedText"-->
+<!--        tools:targetApi="lollipop"/>-->
+
+
+    <com.example.mypetproject.ui.videoplayer.videoplayerview.VideoPlayer
+        android:id="@+id/video_player"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/lesson_title"
+        style="@style/Theme.AppTheme.ExtendedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_margin="@dimen/size_20"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_player" />
+
+    <TextView
+        android:id="@+id/chapter_title"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/size_2"
+        android:layout_marginHorizontal="@dimen/size_20"
+        android:lineSpacingMultiplier="1.5"
+        android:textColor="@color/grey_text"
+        android:textSize="@dimen/text_14"
+        app:layout_constraintEnd_toEndOf="@id/lesson_title"
+        app:layout_constraintStart_toStartOf="@id/lesson_title"
+        app:layout_constraintTop_toBottomOf="@id/lesson_title"
+        tools:text="Some text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

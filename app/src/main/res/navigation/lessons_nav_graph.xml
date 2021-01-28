@@ -9,15 +9,14 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.mypetproject.ui.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" >
+        tools:layout="@layout/dashboard_fragment">
         <action
             android:id="@+id/action_dashboardFragment_to_subjectDetailsFragment"
             app:destination="@id/subjectDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/subjectDetailsFragment"
@@ -27,5 +26,28 @@
         <argument
             android:name="subject"
             app:argType="com.example.mypetproject.model.SubjectModel" />
+        <action
+            android:id="@+id/action_subjectDetailsFragment_to_lessonVideoFragment"
+            app:destination="@id/lessonVideoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+
+        android:id="@+id/lessonVideoFragment"
+        android:name="com.example.mypetproject.ui.videoplayer.LessonVideoFragment"
+        android:label="lesson_video_fragment"
+        tools:layout="@layout/lesson_video_fragment">
+
+        <argument
+            android:name="lesson"
+            app:argType="com.example.mypetproject.model.LessonModel" />
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+
     </fragment>
 </navigation>

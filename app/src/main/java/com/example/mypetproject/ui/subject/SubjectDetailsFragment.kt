@@ -10,6 +10,7 @@ import com.example.mypetproject.R
 import com.example.mypetproject.databinding.SubjectDetailsFragmentBinding
 import com.example.mypetproject.model.LessonModel
 import com.example.mypetproject.ui.adapters.SubjectDetailAdapter
+import com.example.mypetproject.ui.dashboard.DashboardFragmentDirections
 import com.example.mypetproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,7 +24,7 @@ class SubjectDetailsFragment : Fragment(R.layout.subject_details_fragment),
 
     private val viewModel: SubjectDetailsViewModel by activityViewModels()
 
-    private val detailsArgument : SubjectDetailsFragmentArgs by navArgs()
+    private val detailsArgument: SubjectDetailsFragmentArgs by navArgs()
 
     private val subjectDetailAdapter: SubjectDetailAdapter by lazy {
         SubjectDetailAdapter(this)
@@ -48,13 +49,17 @@ class SubjectDetailsFragment : Fragment(R.layout.subject_details_fragment),
             layoutManager = LinearLayoutManager(context)
         }
 
-        if (detailsArgument.subject.chapters.isNotEmpty()){
+        if (detailsArgument.subject.chapters.isNotEmpty()) {
             subjectDetailAdapter.submitList(detailsArgument.subject.chapters)
         }
     }
 
     override fun onItemClick(model: LessonModel) {
 
-        showSnackBar(snackBarText = "HEY I AM ${model.name}", topGravity = true)
+        navController.navigate(
+            SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToLessonVideoFragment(
+                model, detailsArgument.subject.name
+            )
+        )
     }
 }

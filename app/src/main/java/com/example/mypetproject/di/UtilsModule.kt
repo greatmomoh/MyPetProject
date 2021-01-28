@@ -1,4 +1,4 @@
-package com.example.mypetproject.di.modules
+package com.example.mypetproject.di
 
 import com.example.mypetproject.utils.PostExecutionThread
 import com.example.mypetproject.utils.PostExecutionThreadImpl
