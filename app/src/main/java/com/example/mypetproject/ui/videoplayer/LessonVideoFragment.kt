@@ -83,7 +83,6 @@ class LessonVideoFragment : Fragment(R.layout.lesson_video_fragment) {
     private fun checkScreenOrientation() {
         val orientation: Int = resources.configuration.orientation
         binding.videoPlayer.isFullScreen = orientation == Configuration.ORIENTATION_LANDSCAPE
-//        binding.toolbar.visible = orientation != Configuration.ORIENTATION_LANDSCAPE
     }
 
     private fun setupVideo() {
