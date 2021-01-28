@@ -11,10 +11,6 @@ Implementing a bit of clean architecture, by having separated data layers and ca
 I made use of Kotlin flow for the asynchronous aspect over RXJava, because it's been looking like the easier and better library to use of recent.
 
 
-
-
-#### This is a write of a strip of the UlessonTakeHome App.
-
 ## Features
 * Kotlin Coroutines with Flow, for moving data to the various app layers.
 * Clean Architecture in bits with a sprinkle of Uni-directional data flow and proper state management for stateful fragments.
